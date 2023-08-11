@@ -1,8 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import { VscCheck } from "react-icons/vsc";
+import { FormContext } from "../../../App";
 import ViewDetails from "../../Modal/ViewDetails";
 
 function Success() {
+  const { formData } = useContext(FormContext);
   const modalRef = useRef(null);
   const openModal = () => {
     modalRef.current.handleShow();
@@ -15,7 +17,7 @@ function Success() {
             <VscCheck size={"20"} style={{ "position": "relative", "bottom": "10px", "right": "10px" }}/>
           </div>
         </div>
-        <div className="text-3xl font-medium self-center mt-5">Congratulations, Eden!</div>
+        <div className="text-3xl font-medium self-center mt-5">Congratulations, {formData?.full_name}!</div>
         <div className="text-1xl text-gray-400 font-medium text-gray-500 self-center mt-2">You have completed onboarding, you can start using the Eden!</div>
         <button
           className="w-4/5 rounded-md bg-indigo-500 font-small text-white mt-7 p-3"
